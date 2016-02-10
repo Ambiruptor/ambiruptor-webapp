@@ -40,5 +40,4 @@ conda install --file requirements.txt
 python app.py
 ```
 
-By default runs on
-```http://127.0.0.1:5000/```
+By default runs on http://127.0.0.1:5000/
