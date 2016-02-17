@@ -12,6 +12,21 @@
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        
+        <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script>
+            function success(result) {
+                alert("Success !")
+                var obj = $.parseJSON(result);
+                alert(obj);
+            }
+            function disambiguate() {
+                var str = $("#ambiguous_text").val();
+                var request = $.post("/disambiguate.json", {"text" : str});
+                request.success(success);
+                request.fail(function(){alert("Error !")});
+            }
+        </script>
     </head>
 
     <body class="animated bounceInDown">
@@ -22,10 +37,8 @@
         <div class="content">
             <!-- <h1 class="title">Ambiruptor</h1> -->
 
-            <form action="/disambiguate.json" method="post">
-              <textarea name="text" placeholder="Enter your text here"></textarea>
-              <p><input type="submit" value="Disambiguate"></p>
-            </form>
+            <textarea id="ambiguous_text" placeholder="Enter your text here"></textarea>
+            <p><button onclick="disambiguate()">Disambiguate</button></p>
 
             <ul class="social-icons">
                 <li><a class="github" href="https://github.com/Ambiruptor/Ambiruptor" title="Github">Github</a></li>
