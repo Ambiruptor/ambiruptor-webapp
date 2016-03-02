@@ -22,9 +22,6 @@ article, aside, details, figcaption, figure, footer,
 header, hgroup, menu, nav, section {
     display: block;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
-}
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -84,7 +81,7 @@ body {
 
 .avatar {
     float: left;
-    margin: 0 40px 20px 0;
+    margin: 78px 40px 40px 45px;
 }
     .avatar img {
         max-width: 200px;
@@ -94,7 +91,7 @@ body {
 
 .content {
     float: left;
-    width: 300px;
+    width: 369px;
 }
     .title {
         font-size: 48px;
@@ -128,7 +125,7 @@ body {
 	       .github {
 	            background-image: url(../img/github.png);
                 width: 21px;
-                height: 21px;	    
+                height: 21px;
 	       }
             .dribbble {
                 background-image: url(../img/dribbble.png);
@@ -145,14 +142,6 @@ body {
                 width: 20px;
                 height: 9px;
             }
-
-textarea {
-    width: 30em;
-    height: 20em;
-    font-family: Helvetica, Arial, sans-serif;
-}
-
-
 
 
 /*------------------------------------*\
@@ -232,15 +221,15 @@ Copyright (c) 2012 Dan Eden
     0% {
         -webkit-transform: translateY(-2000px);
     }
-    
+
     60% {
         -webkit-transform: translateY(30px);
     }
-    
+
     80% {
         -webkit-transform: translateY(-10px);
     }
-    
+
     100% {
         -webkit-transform: translateY(0);
     }
@@ -250,15 +239,15 @@ Copyright (c) 2012 Dan Eden
     0% {
         -moz-transform: translateY(-2000px);
     }
-    
+
     60% {
         -moz-transform: translateY(30px);
     }
-    
+
     80% {
         -moz-transform: translateY(-10px);
     }
-    
+
     100% {
         -moz-transform: translateY(0);
     }
@@ -268,15 +257,15 @@ Copyright (c) 2012 Dan Eden
     0% {
         -o-transform: translateY(-2000px);
     }
-    
+
     60% {
         -o-transform: translateY(30px);
     }
-    
+
     80% {
         -o-transform: translateY(-10px);
     }
-    
+
     100% {
         -o-transform: translateY(0);
     }
@@ -286,15 +275,15 @@ Copyright (c) 2012 Dan Eden
     0% {
         transform: translateY(-2000px);
     }
-    
+
     60% {
         transform: translateY(30px);
     }
-    
+
     80% {
         transform: translateY(-10px);
     }
-    
+
     100% {
         transform: translateY(0);
     }
@@ -318,7 +307,7 @@ Copyright (c) 2012 Dan Eden
     .avatar,
     .content {
         float: none;
-        
+
     }
 
     .avatar img {
@@ -330,4 +319,3 @@ Copyright (c) 2012 Dan Eden
         width: 100%;
     }
 }
-
