@@ -12,13 +12,28 @@
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        
+
         <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script>
             function success(result) {
-                alert("Success !")
-                var obj = $.parseJSON(result);
-                alert(obj);
+                alert("Sucess !");
+                //to be changed ; see with Simon (Pierre)
+                result2= "{\"disamb\" : " + result + "}";
+                var obj = JSON.parse(result2);
+                var str = $("#ambiguous_text").val();
+                alert(result2)
+                document.getElementById("disambiguated_text").innerHTML = str;
+                var nhtml = "";
+                var prec=0;
+                for(i=0; i<obj.disamb.length; i++){
+                    nhtml += str.substr(prec,obj.disamb[i].begin);
+                    nhtml += "<a href=\"" + obj.disamb[i].url + "\">";
+                    nhtml += str.substr(obj.disamb[i].begin, obj.disamb[i].end);
+                    nhtml += "</a>";
+                    prec = obj.disamb[i].end;
+                }
+                nhtml += str.slice(prec);
+                document.getElementById("disambiguated_text").innerHTML = nhtml;
             }
             function disambiguate() {
                 var str = $("#ambiguous_text").val();
@@ -39,7 +54,7 @@
 
             <textarea id="ambiguous_text" placeholder="Enter your text here"></textarea>
             <p><button onclick="disambiguate()">Disambiguate</button></p>
-
+            <p id="disambiguated_text">Paragraph</p>
             <ul class="social-icons">
                 <li><a class="github" href="https://github.com/Ambiruptor/Ambiruptor" title="Github">Github</a></li>
             </ul>
