@@ -124,7 +124,7 @@ text-indent: -9999px;
 
 .spaced {
     line-height: 200%;
-} 
+}
 
 .btn-group {
     margin-top: 5px;
@@ -135,9 +135,27 @@ text-indent: -9999px;
     float: left;
 }
 
+#left-btn-group-dis {
+    float: left;
+}
+
 #right-btn-group {
     float: right;
 }
+
+#right-btn-group-dis {
+    float: right;
+}
+
+
+#checkmodeButton {
+    display : none;
+}
+
+#checkButton {
+    display : none;
+}
+
 
 
 /*Animate.css - http://daneden.me/animate*/
