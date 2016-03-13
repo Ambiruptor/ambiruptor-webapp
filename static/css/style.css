@@ -58,11 +58,24 @@ img {
     font-style: italic;
 }
 input,
-select, option, optgroup,
+option, optgroup,
 textarea {
     font: inherit;
 }
 
+select {
+   background: transparent;
+   padding: 0px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 5px;
+   height: 25px;
+   -webkit-appearance: none;
+   overflow: hidden;
+   -moz-appearance: none;
+   color:#006600;
+}
 
 html {
   position: relative;
@@ -155,6 +168,7 @@ text-indent: -9999px;
 #checkButton {
     display : none;
 }
+
 
 
 
@@ -362,8 +376,8 @@ body {
     }
 
     .avatar img {
-        max-width: 125px;
-        max-height: 125px;
+        max-width: 150px;
+        max-height: 150px;
     }
 
     .content {
