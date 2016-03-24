@@ -1,0 +1,96 @@
+/* Move down content because we have a fixed navbar that is 50px tall 
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+} */
+
+.jumbotron {
+	background-color : #DADFE1;
+	padding-right : 0px !important;
+}
+
+
+
+.top {
+	background-color :  black;
+	color : white;
+	height : 100px;
+	width : 100%;
+	text-align : center;
+	margin : 0px;
+}
+
+h1 {
+	margin : 0px;
+	font-family : "DejaVu Serif";
+	line-height : 100px;
+	vertical-align : middle;
+}
+
+.navbar {
+	margin : 0px;
+	text-align : right;
+}
+
+body {
+	background-color : #DADFE1;
+}
+
+.row-left {
+	padding-left : 0px;
+}
+
+.row-right {
+	padding-right : 0px;
+}
+
+.bgwhite {
+	background-color : #ecf0f1;
+	height : 250px;
+	padding : 20px;
+}
+
+.layout{
+	border : #337ab7 solid 4px;
+	width : 100%;
+	height : 210px;
+	border-radius : 3px;
+}
+
+.bgwhite:hover {background-color : white;}
+
+footer {
+	height : 50px;
+	background-color : #101010;
+	text-align : center;
+	margin : 0px;
+	margin-top : 40px;
+	width : 100%;
+}
+
+h3 {
+	text-align : center;
+}
+
+.glyphicon {
+	font-size : 60px;
+	text-align : center;
+	width : 100%;
+margin-top : 30px;
+margin-bottom : 30px;
+}
+
+
+i {
+text-align : center;
+width : 100%;
+margin-top : 30px;
+
+}
+
+.logo {
+margin-top : 60px;
+height : 300px;
+margin-left : 30px;
+}
+
