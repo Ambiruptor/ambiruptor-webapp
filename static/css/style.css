@@ -289,6 +289,10 @@ Out custom settings
     text-align:center;
 }
 
+#tit1, #tit2 {
+    color: #4d4d4d ;
+}
+
 #ambiguous{
     width:25em;
     background-color:black;
