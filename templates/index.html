@@ -30,7 +30,7 @@
                     <div class="col-md-5">
                         <div class="centerBlock">
                             <h2 id="tit1" class="spaced">
-                                AMBIRUPTEE
+                                Ambiruptee
                             </h2>
                             <textarea class="form-control" style="min-width: 100%" id="ambiguous_text" placeholder="Enter your text here" class="spaced"></textarea>
                             <div class="btn-group" id="left-btn-group">
@@ -52,7 +52,7 @@
                     <div class="col-md-5">
                         <div class="centerBlock">
                             <div id="disambiguated">
-                                <h2 id="tit2" class="spaced"> AMBIRUPTED </h2>
+                                <h2 id="tit2" class="spaced"> Ambirupted </h2>
                                 <div id="disambiguated_text"> </div>
                             </div>
                             <div class="btn-group" id="right-btn-group-dis">
@@ -79,89 +79,7 @@
 
         <!-- Scripts -->
         <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-        <script>
-            //we define global variables
-            var obj="";
-            var str="";
-
-            function success(result) {
-                document.getElementById("warnings").innerHTLM="";
-                //to be changed ; see with Simon (Pierre)
-                result2= "{\"disamb\" : " + result + "}";
-                obj = JSON.parse(result2);
-                str = $("#ambiguous_text").val();
-                var nhtml = "";
-                var prec=0;
-                for(i=0; i<obj.disamb.length; i++){
-                    nhtml += str.substring(prec,obj.disamb[i].begin);
-                    nhtml += "<a href=\"" + obj.disamb[i].url + "\" target=\"_blank\">";
-                    nhtml += str.substring(obj.disamb[i].begin, obj.disamb[i].end);
-                    nhtml += "</a>";
-                    prec = obj.disamb[i].end;
-                }
-                nhtml += str.slice(prec);
-                document.getElementById("disambiguated_text").innerHTML = nhtml;
-                document.getElementById("checkButton").style.display="block";
-                document.getElementById("checkmodeButton").style.display="block";
-            }
-            function disambiguate() {
-                var str = $("#ambiguous_text").val();
-                var request = $.post("/disambiguate.json", {"text" : str});
-                request.success(success);
-                request.fail(function(){document.getElementById("warnings").innerHTML="Error"});
-            }
-            function erase(){
-                document.getElementById("ambiguous_text").value="";
-                document.getElementById("disambiguated_text").innerHTML="";
-            }
-
-            function checkmode(){
-                //Receive from server the list of different possible sense for each ambiguous word
-                document.getElementById("checkButton").innerHTML = "Now everything is OK!"
-                document.getElementById("checkmodeButton").style="display:none;"
-                var possible_senses = [
-                    ['Bar (place)','Bar (fish)'],
-                    ['Plant (green)', 'Plant (factory)']
-                ];
-                selected=[0,1];
-                var nhtml="";
-                var prec=0;
-                for(i=0; i<obj.disamb.length; i++){
-                    nhtml += str.substring(prec, obj.disamb[i].begin, obj.disamb[i].end);
-                    nhtml += "<select id=\"selection" + i + "\">";
-                    for(j=0; j<possible_senses[i].length; j++){
-                        nhtml += "<option";
-                        if(j == selected[i]){
-                            nhtml += " selected";
-                        }
-                        nhtml += ">" + possible_senses[i][j] + "</option>";
-                    }
-                    nhtml += "</select>";
-                    prec= obj.disamb[i].end;
-                }
-                nhtml += str.slice(prec);
-                document.getElementById("disambiguated_text").innerHTML = nhtml;
-            }
-            function checked(){
-                alert("Thank you for your support!")
-                // Send to server
-                if(document.getElementById("checkButton").innerHTML=="Everything is OK!"){
-                    //Send the fact that the given senses were right
-                    alert("TODO : send this information to server");
-                }
-                else{
-                    //Send the corrections
-                    var corrections = [];
-                    for(i=0; i<obj.disamb.length; i++){
-                        corrections.push(document.getElementById("selection"+i).selectedIndex);
-                    }
-                    alert("TODO : send "+corrections + " to server");
-
-                }
-            }
-
-
-        </script>
+        <script src="../static/js/plugin.js"></script>
     </body>
 </html>
 
