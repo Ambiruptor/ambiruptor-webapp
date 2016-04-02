@@ -8,6 +8,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/ambiruptor')
+def ambiruptor():
+    return render_template('ambiruptor.html')
+
+
 @app.route('/disambiguate.json', methods=['POST'])
 def disambiguate():
     print("Received : %s" % request.form["text"])
@@ -35,14 +40,14 @@ def check_disambigation():
         {
             "begin" : 10,
             "end" : 15,
-            "sense" : "Bar (place)",
+            "sense_index" : 1,
             "all_senses" : ["Bar (place)", "Bar (fish)", "Bar (chocolate)"],
             "url" : "https://en.wikipedia.org/wiki/Bar"
         },
         {
             "begin" : 18,
             "end" : 30,
-            "sense" : "Plant (green)",
+            "sense_index" : 2,
             "all_senses" : ["Plant (green)", "Plant (factory)", "Plant (person)"],
             "url" : "https://en.wikipedia.org/wiki/Plant"
         }

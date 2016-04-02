@@ -9,6 +9,10 @@ body {
 	padding-right : 0px !important;
 }
 
+.top{
+    width:50%; /* you can use % */
+    height: auto;
+}
 
 
 .top {
@@ -32,9 +36,6 @@ h1 {
 	text-align : right;
 }
 
-body {
-	background-color : #DADFE1;
-}
 
 .row-left {
 	padding-left : 0px;

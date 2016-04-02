@@ -35,7 +35,6 @@ function check_success(result) {
     for(i=0; i<obj.disamb.length; i++) {
         possible_senses.push(obj.disamb[i].all_senses);
     }
-    selected=[0,1];
     var nhtml = "";
     var prec=0;
     for(i=0; i<obj.disamb.length; i++){
@@ -43,7 +42,7 @@ function check_success(result) {
         nhtml += "<select id=\"selection" + i + "\">";
         for(j=0; j < possible_senses[i].length; j++){
             nhtml += "<option";
-            if(j == selected[i]){
+            if(j == obj.disamb[i].sense_index){
                 nhtml += " selected";
             }
             nhtml += ">" + possible_senses[i][j] + "</option>";
