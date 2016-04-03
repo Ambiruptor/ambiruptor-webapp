@@ -86,54 +86,6 @@ html {
 Some template settings
 */
 
-.product .img-responsive {
-    margin: 0 auto;
-}
-
-.social-icons li {
-display: inline;
-}
-.social-icons a {
-display: inline-block;
-margin-right: 10px;
-text-indent: -9999px;
-}
-.twitter {
-    background-image: url(../img/twitter.png);
-    width: 20px;
-    height: 17px;
-}
-.facebook {
-    background-image: url(../img/facebook.png);
-    width: 10px;
-    height: 19px;
-}
-.googleplus {
-    background-image: url(../img/googleplus.png);
-    width: 21px;
-    height: 19px;
-}
-.github {
-    background-image: url(../img/github.png);
-    width: 21px;
-    height: 21px;
-}
-.dribbble {
-    background-image: url(../img/dribbble.png);
-    width: 21px;
-    height: 19px;
-}
-.instagram {
-    background-image: url(../img/instagram.png);
-    width: 20px;
-    height: 19px;
-}
-.flickr {
-    background-image: url(../img/flickr.png);
-    width: 20px;
-    height: 9px;
-}
-
 
 .spaced {
     line-height: 200%;
@@ -170,116 +122,6 @@ text-indent: -9999px;
 }
 
 
-
-
-/*Animate.css - http://daneden.me/animate*/
-/*LICENSED UNDER THE  MIT LICENSE (MIT)
-
-Copyright (c) 2012 Dan Eden
-*/
-
-/*.animated {
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    -ms-animation-fill-mode: both;
-    -o-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -moz-animation-duration: 1s;
-    -ms-animation-duration: 1s;
-    -o-animation-duration: 1s;
-    animation-duration: 1s;
-}
-
-.animated.hinge {
-    -webkit-animation-duration: 2s;
-    -moz-animation-duration: 2s;
-    -ms-animation-duration: 2s;
-    -o-animation-duration: 2s;
-    animation-duration: 2s;
-}
-
-@-webkit-keyframes bounceInDown {
-    0% {
-        -webkit-transform: translateY(-2000px);
-    }
-
-    60% {
-        -webkit-transform: translateY(30px);
-    }
-
-    80% {
-        -webkit-transform: translateY(-10px);
-    }
-
-    100% {
-        -webkit-transform: translateY(0);
-    }
-}
-
-@-moz-keyframes bounceInDown {
-    0% {
-        -moz-transform: translateY(-2000px);
-    }
-
-    60% {
-        -moz-transform: translateY(30px);
-    }
-
-    80% {
-        -moz-transform: translateY(-10px);
-    }
-
-    100% {
-        -moz-transform: translateY(0);
-    }
-}
-
-@-o-keyframes bounceInDown {
-    0% {
-        -o-transform: translateY(-2000px);
-    }
-
-    60% {
-        -o-transform: translateY(30px);
-    }
-
-    80% {
-        -o-transform: translateY(-10px);
-    }
-
-    100% {
-        -o-transform: translateY(0);
-    }
-}
-
-@keyframes bounceInDown {
-    0% {
-        transform: translateY(-2000px);
-    }
-
-    60% {
-        transform: translateY(30px);
-    }
-
-    80% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.bounceInDown {
-    -webkit-animation-name: bounceInDown;
-    -moz-animation-name: bounceInDown;
-    -o-animation-name: bounceInDown;
-    animation-name: bounceInDown;
-}
-*/
-
-
 /*
 Out custom settings
 */
@@ -300,17 +142,28 @@ Out custom settings
 
 
 #disambiguated{
-    float:right
+    float:right;
+    width: 100%;
 }
 
 #disambiguated_text {
     overflow: auto;
     float:right;
-    width:30em;
+    width:100%;
     height:25em;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "DejaVu Sans";
     word-wrap:break-word;
     border: 1px solid #ccc;
+    border-radius : 3px;
+    display: block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075)
 }
 
 #warnings {
@@ -321,8 +174,12 @@ Out custom settings
 #ambiguous_text {
     width: 30em;
     height: 25em;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "DejaVu Sans";
     float:left;
+}
+
+.btn-group {
+    font-family: "DejaVu Sans";
 }
 
 /*
@@ -361,12 +218,41 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
+   Set the fixed height of the footer here 
   height: 60px;
+}
+
+.content {
+    background-color: #eee;
+    float: none;
+    margin-left: 25px;
+    margin-top: 25px;
+    padding-right : 0px !important;
+    background-color: #eee;
+    border : #fff solid 4px;
+    border-radius : 10px;
+}
+
+#disambiguated_text {
+    background-color: #fff;
 }
 
 .container .text-muted {
   margin: 20px 0;
+}
+
+.row {
+    margin-right: 60px !important;
+    margin-left: 60px !important;
+}
+
+
+.right-form {
+    float: right;
+}
+
+.select {
+    color: #007433;
 }
 
 /*------------------------------------*\

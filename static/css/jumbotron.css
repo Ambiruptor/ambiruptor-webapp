@@ -85,12 +85,17 @@ h1 {
 .bgwhite:hover {background-color : white;}
 
 footer {
+	position: relative;
 	height : 50px;
-	background-color : #101010;
+	background-color : #007433;
 	text-align : center;
-	margin : 0px;
+	margin : 0 auto;
 	margin-top : 40px;
 	width : 100%;
+	vertical-align: center;
+	color: #fff;
+	line-height: 60px;
+	font-size: 15px;
 }
 
 h3 {

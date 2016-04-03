@@ -27,15 +27,15 @@
   </head>
 
   <body>
-    
-    <div class="top">
+	
+	<div class="top">
     <div style="display:inline;text-align:center; ">
-      <a href="/"><img src="../static/img/dino_circle_no_interr.svg" class="logo"/></a>
+      <img src="../static/img/dino_circle_no_interr.svg" class="logo"/>
       <!-- <div style="float: right"> -->
         Ambiruptor
       <!-- </div> -->
-    </div>  
-    </div>
+    </div>	
+	</div>
 
 
 
@@ -49,7 +49,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
         <li><a href="about">About</a></li>
-           <li><a href="ambiruptor">App</a></li>
+	       <li><a href="ambiruptor">App</a></li>
       </ul>
     </div><!-- /.navbar-collapse
   </div><!-- /.container-fluid -->
@@ -59,8 +59,7 @@
   <div class="container">
     <div class="content">
               <div class="row">
-                  <div class="col-md-6 left-form">
-                    
+                  <div class="col-md-5">
                       <div class="centerBlock">
                           <h2 id="tit1" class="spaced">
                               Ambiruptee
@@ -73,31 +72,35 @@
                               </button>
                           </div>
                           <div class="btn-group" id="right-btn-group">
-                              <button id="disamButton" onclick="disambiguate()" type="button" class="btn btn-primary">Disambiguate</button>
+                              <button id="disamButton" onclick="disambiguate()" type="button" class="btn btn-default">Disambiguate</button>
                           </div>
-                     </div>
+                      </div>
                   </div>
-                  <div class="col-md-6 right-form">
-                          <div class="centerBlock">
-                              <div id="disambiguated">
-                                  <h2 id="tit2" class="spaced"> Ambirupted </h2>
-                                  <div id="disambiguated_text"> </div>
-                              </div>
-                              <div class="btn-group" id="right-btn-group-dis">
-                                  <button type="button" class='btn btn-primary' id="checkButton" onclick="checked()"> Eveything is OK! </button>
-                              </div>
-                              <div class="btn-group" id="left-btn-group-dis">
-                                  <button type="button" class='btn btn-primary' id="checkmodeButton" onclick="checkmode()"> Enter checkmode </button>
-                              </div>
-                          </div>  
-                    </div>
+                  <div class="col-md-2">
+                      <div class="centerBlock">
+                      </div>
+                  </div>
+                  <div class="col-md-5">
+                      <div class="centerBlock">
+                          <div id="disambiguated">
+                              <h2 id="tit2" class="spaced"> Ambirupted </h2>
+                              <div id="disambiguated_text"> </div>
+                          </div>
+                          <div class="btn-group" id="right-btn-group-dis">
+                              <button type="button" class='btn btn-default' id="checkButton" onclick="checked()"> Eveything is OK! </button>
+                          </div>
+                          <div class="btn-group" id="left-btn-group-dis">
+                              <button type="button" class='btn btn-default' id="checkmodeButton" onclick="checkmode()"> Enter checkmode </button>
+                          </div>
+                      </div>
+                  </div>
               </div>
               <div id="warnings"></div>
       </div>
       <hr>    
   </div> <!-- /container -->
 
-    <footer>
+	<footer>
         <p>Powered by the best integrated project team, 2016. Contact us at ambiruptor@ens-lyon.fr</p>
       </footer>
     <!-- Scripts -->
@@ -108,7 +111,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../static/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
