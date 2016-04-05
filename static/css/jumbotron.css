@@ -11,10 +11,38 @@ body {
 	padding-right : 0px !important;
 }
 
+.jumbotron.about {
+	text-align: left;
+	width: 60%;
+	padding: 50px;
+    float: left;
+    position: relative;
+    left: -30%;
+}
+
+.fixer-container {
+	  float: left;
+	  position: relative;
+	  left: 50%;
+ }
+
 #welcome {
 	font-size: 50px;
 	font-family : "DejaVu Sans";
 	line-height: 70px;
+}
+
+#habout {
+	font-size: 35px;
+	font-family : "DejaVu Sans";
+	line-height: 50px;
+}
+
+.contributors {
+	margin-bottom: 15px;
+	font-size: 21px;
+	/*font-weight: 200;*/
+	font-family : "DejaVu Sans";
 }
 
 .navbar .navbar-nav {
