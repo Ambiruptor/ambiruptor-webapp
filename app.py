@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request
+from utils import format_correction_corpus
+
+import json
 
 app = Flask(__name__)
 
@@ -62,9 +65,16 @@ def check_disambigation():
 
 @app.route('/submit-corrections.json', methods=['POST'])
 def submit_corrections():
-    print("Received corrections to text:\n %s\n" % request.form["text"])
-    print("Disambiguation: %s" % request.form["disambiguation"])
-    print("Correct senses indices: %s" % request.form["sense_indices"])
+    text = request.form["text"]
+    disamb = request.form["disambiguation"]
+    corrections = json.loads(request.form["sense_indices"])
+    corpus = format_correction_corpus(text, disamb, corrections)
+    with open('corpus/corrections.dump', 'a') as f:
+        try:
+            f.write(str(corpus))
+            f.write("\n")
+        except BaseException as e:
+            print(e)
     return "Success!"
     # TODO think how to save them nicely
 
