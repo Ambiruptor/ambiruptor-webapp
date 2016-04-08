@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
 from utils import format_correction_corpus
+from utils import disambiguation
+from utils import format_disambiguation
 
 import json
+
 
 app = Flask(__name__)
 
@@ -24,21 +27,23 @@ def ambiruptor():
 @app.route('/disambiguate.json', methods=['POST'])
 def disambiguate():
     print("Received : %s" % request.form["text"])
-    dummy_data = """[\
-        {
-            "begin" : 10,
-            "end" : 15,
-            "sense" : "Bar (place)",
-            "url" : "https://en.wikipedia.org/wiki/Bar"
-        },
-        {
-            "begin" : 18,
-            "end" : 30,
-            "sense" : "Plant (green)",
-            "url" : "https://en.wikipedia.org/wiki/Plant"
-        }
-    ]"""
-    return dummy_data
+    disamb = disambiguation(request.form["text"])
+    return format_disambiguation(disamb)
+    # dummy_data = """[\
+    #     {
+    #         "begin" : 10,
+    #         "end" : 15,
+    #         "sense" : "Bar (place)",
+    #         "url" : "https://en.wikipedia.org/wiki/Bar"
+    #     },
+    #     {
+    #         "begin" : 18,
+    #         "end" : 30,
+    #         "sense" : "Plant (green)",
+    #         "url" : "https://en.wikipedia.org/wiki/Plant"
+    #     }
+    # ]"""
+    # return dummy_data
 
 
 @app.route('/check-disambiguate.json', methods=['POST'])
