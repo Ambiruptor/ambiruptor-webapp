@@ -7,7 +7,6 @@ import numpy as np
 import ambiruptor.library.preprocessors.feature_extractors as fe
 
 from ambiruptor.library.preprocessors.tokenizers import word_tokenize
-from nltk.stem import WordNetLemmatizer
 
 
 
@@ -30,7 +29,7 @@ def format_correction_corpus(text, disamb, correct_indices):
     return tokens
 
 
-def predictor(datadir, s):    
+def predictor(datadir, text):    
     # List of ambiguous words
     filename_ambiguouswords = datadir + "/ambiguous_words.txt"
     with open(filename_ambiguouswords, 'r') as f:
@@ -39,8 +38,8 @@ def predictor(datadir, s):
             ambiguous_words.remove("")
 
     # Word tokenize
-    words = np.array(word_tokenize(s.lower()))
     results = []
+    words = word_tokenize(text.lower())
 
     # Disambiguation
     for w in ambiguous_words:
@@ -56,8 +55,6 @@ def predictor(datadir, s):
         ambiguous_extractor = fe.AmbiguousExtraction()
         ambiguous_extractor.add_feature(feature)
         try:
-            # print(words)
-            # print(ambiguous_word)
             ambiguous_data = ambiguous_extractor.extract_features(words, ambiguous_word)
         except BaseException as e:
             print(e)
@@ -73,17 +70,16 @@ def predictor(datadir, s):
         with open(filename_models, "rb") as f:
             model = pickle.load(f)
         predictions = model.predict(ambiguous_data)
-
         for index, meaning in zip(ambiguous_data.targets, predictions):
             result = dict()
             result["begin"] = sum([len(words[i]) for i in range(index)])
             result["end"] = result["begin"] + len(words[index])
             result["meaning"] = meaning
             results.append(result)
+
     # Return results
     return results
 
 
 def disambiguation(text):
-    print(predictor("data/", text))
-    return predictor("data/", text)
+    return json.dumps(predictor("data/", text))

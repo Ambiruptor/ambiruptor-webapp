@@ -27,22 +27,8 @@ def ambiruptor():
 def disambiguate():
     print("Received : %s" % request.form["text"])
     disamb = disambiguation(request.form["text"])
+    print(disamb)
     return disamb
-    # dummy_data = """[\
-    #     {
-    #         "begin" : 10,
-    #         "end" : 15,
-    #         "sense" : "Bar (place)",
-    #         "url" : "https://en.wikipedia.org/wiki/Bar"
-    #     },
-    #     {
-    #         "begin" : 18,
-    #         "end" : 30,
-    #         "sense" : "Plant (green)",
-    #         "url" : "https://en.wikipedia.org/wiki/Plant"
-    #     }
-    # ]"""
-    # return dummy_data
 
 
 @app.route('/check-disambiguate.json', methods=['POST'])
