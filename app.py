@@ -25,32 +25,15 @@ def ambiruptor():
 
 @app.route('/disambiguate.json', methods=['POST'])
 def disambiguate():
-    print("Received : %s" % request.form["text"])
     disamb = disambiguation(request.form["text"])
-    print(disamb)
     return disamb
 
 
 @app.route('/check-disambiguate.json', methods=['POST'])
 def check_disambigation():
-    print("Received : %s" % request.form["text"])
-    dummy_data = """[\
-        {
-            "begin" : 10,
-            "end" : 15,
-            "sense_index" : 1,
-            "all_senses" : ["Bar (place)", "Bar (fish)", "Bar (chocolate)"],
-            "url" : "https://en.wikipedia.org/wiki/Bar"
-        },
-        {
-            "begin" : 18,
-            "end" : 30,
-            "sense_index" : 2,
-            "all_senses" : ["Plant (green)", "Plant (factory)", "Plant (person)"],
-            "url" : "https://en.wikipedia.org/wiki/Plant"
-        }
-    ]"""
-    return dummy_data
+    # print("Received : %s" % request.form["text"])
+    print("Received : %s" % request.form["disamb"])
+    return request.form["disamb"]
 
 
 @app.route('/submit-corrections.json', methods=['POST'])

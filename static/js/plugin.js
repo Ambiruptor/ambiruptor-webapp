@@ -23,13 +23,27 @@ function success(result) {
     document.getElementById("checkmodeButton").style.display="block";
 }
 
-function check_success(result) {
 
+function submit_success(result) {
+    alert("Thank you for your support!");
+}
+function disambiguate() {
+    var str = $("#ambiguous_text").val();
+    var request = $.post("/disambiguate.json", {"text" : str});
+    request.success(success);
+    request.fail(function(){document.getElementById("warnings").innerHTML="Error"});
+}
+function erase(){
+    document.getElementById("ambiguous_text").value="";
+    document.getElementById("disambiguated_text").innerHTML="";
+}
+
+function checkmode(){
+    // var request = $.post("/check-disambiguate.json", JSON.stringify(obj));
+    // request.success(check_success);
+    // request.fail(function(){document.getElementById("warnings").innerHTML="Checkmode Error"});
     document.getElementById("checkButton").innerHTML = "Now everything is OK!"
     document.getElementById("checkmodeButton").style="display:none;"
-    
-    result2= "{\"disamb\" : " + result + "}";
-    obj = JSON.parse(result2);
     
     var possible_senses = [];
     for(i=0; i<obj.disamb.length; i++) {
@@ -52,27 +66,6 @@ function check_success(result) {
     }
     nhtml += str.slice(prec);
     document.getElementById("disambiguated_text").innerHTML = nhtml;
-}
-function submit_success(result) {
-    alert("Thank you for your support!");
-}
-function disambiguate() {
-    var str = $("#ambiguous_text").val();
-    var request = $.post("/disambiguate.json", {"text" : str});
-    request.success(success);
-    request.fail(function(){document.getElementById("warnings").innerHTML="Error"});
-}
-function erase(){
-    document.getElementById("ambiguous_text").value="";
-    document.getElementById("disambiguated_text").innerHTML="";
-}
-
-function checkmode(){
-    //Receive from server the list of different possible sense for each ambiguous word
-    var str = $("#ambiguous_text").val();
-    var request = $.post("/check-disambiguate.json", {"text" : str});
-    request.success(check_success);
-    request.fail(function(){document.getElementById("warnings").innerHTML="Checkmode Error"});
 }
 function checked(){
     // Text to add to the corpus in case of 
