@@ -1,10 +1,14 @@
 import json
 import re
 import pickle
+import os.path
+
+import numpy as np
 import ambiruptor.library.preprocessors.feature_extractors as fe
+
 from ambiruptor.library.preprocessors.tokenizers import word_tokenize
 from nltk.stem import WordNetLemmatizer
-import numpy as np
+
 
 
 def format_correction_corpus(text, disamb, correct_indices):
@@ -25,22 +29,61 @@ def format_correction_corpus(text, disamb, correct_indices):
 
     return tokens
 
+
+def predictor(datadir, s):    
+    # List of ambiguous words
+    filename_ambiguouswords = datadir + "/ambiguous_words.txt"
+    with open(filename_ambiguouswords, 'r') as f:
+        ambiguous_words = {x.rstrip() for x in f.readlines()}
+        if "" in ambiguous_words:
+            ambiguous_words.remove("")
+
+    # Word tokenize
+    words = np.array(word_tokenize(s.lower()))
+    results = []
+
+    # Disambiguation
+    for w in ambiguous_words:
+        # Ambiguous word
+        ambiguous_word = re.match(r"[^_]+", w).group(0).lower()
+        # Feature extraction
+        filename_features = datadir + "/feature_extraction/" + w + ".dump"
+        if not os.path.isfile(filename_features):
+            continue
+        feature = fe.CloseWordsFeatureExtractor()
+        feature.load(filename_features)
+
+        ambiguous_extractor = fe.AmbiguousExtraction()
+        ambiguous_extractor.add_feature(feature)
+        try:
+            # print(words)
+            # print(ambiguous_word)
+            ambiguous_data = ambiguous_extractor.extract_features(words, ambiguous_word)
+        except BaseException as e:
+            print(e)
+
+        if ambiguous_data.data.shape[0] == 0:
+            continue
+
+        # Model prediction
+        filename_models = datadir + "/models/" + w + ".dump"
+        if not os.path.isfile(filename_models):
+            #print("No models file for word '%s'." % w)
+            continue
+        with open(filename_models, "rb") as f:
+            model = pickle.load(f)
+        predictions = model.predict(ambiguous_data)
+
+        for index, meaning in zip(ambiguous_data.targets, predictions):
+            result = dict()
+            result["begin"] = sum([len(words[i]) for i in range(index)])
+            result["end"] = result["begin"] + len(words[index])
+            result["meaning"] = meaning
+            results.append(result)
+    # Return results
+    return results
+
+
 def disambiguation(text):
-    with open("models/ambiguous_words.txt", "r") as words_f:
-        ambiguous_words = []
-        for line in words_f.readlines():
-            word = line
-            ambiguous_words.append(word)
-            word_sense = re.findall("(.+)_.+", word.lower())[0]
-            print("Loading feature extractor...")
-            close_words_extractor = fe.CloseWordsFeatureExtractor()
-            close_words_extractor.load("models/feature_extraction/Bar_(disambiguation).dump")
-            words = np.array(word_tokenize(text))
-            wordnet_lemmatizer = WordNetLemmatizer()
-            lemmatized = [wordnet_lemmatizer.lemmatize(word) for word in words]
-            print(close_words_extractor.extract_features(lemmatized, word_sense))
-
-
-
-def format_disambiguation(disamb):
-    pass
+    print(predictor("data/", text))
+    return predictor("data/", text)

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from utils import format_correction_corpus
 from utils import disambiguation
-from utils import format_disambiguation
 
 import json
 
@@ -28,7 +27,7 @@ def ambiruptor():
 def disambiguate():
     print("Received : %s" % request.form["text"])
     disamb = disambiguation(request.form["text"])
-    return format_disambiguation(disamb)
+    return disamb
     # dummy_data = """[\
     #     {
     #         "begin" : 10,
