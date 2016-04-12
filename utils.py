@@ -39,14 +39,14 @@ def predictor(datadir, text):
 
     # Word tokenize
     results = []
-    words = word_tokenize(text.lower())
+    words = np.array(word_tokenize(text.lower()))
 
     # Disambiguation
     for w in ambiguous_words:
         # Ambiguous word
         ambiguous_word = re.match(r"[^_]+", w).group(0).lower()
         # Feature extraction
-        filename_features = datadir + "/feature_extraction/" + w + ".dump"
+        filename_features = datadir + "/feature_extractors/" + w + ".dump"
         if not os.path.isfile(filename_features):
             continue
         feature = fe.CloseWordsFeatureExtractor()
@@ -54,23 +54,18 @@ def predictor(datadir, text):
 
         ambiguous_extractor = fe.AmbiguousExtraction()
         ambiguous_extractor.add_feature(feature)
-        try:
-            ambiguous_data = ambiguous_extractor.extract_features(words, ambiguous_word)
-        except BaseException as e:
-            print(e)
+        ambiguous_data = ambiguous_extractor.extract_features(words, ambiguous_word)
 
         if ambiguous_data.data.shape[0] == 0:
             continue
-
         # Model prediction
         filename_models = datadir + "/models/" + w + ".dump"
         if not os.path.isfile(filename_models):
-            #print("No models file for word '%s'." % w)
             continue
+        
         with open(filename_models, "rb") as f:
             model = pickle.load(f)
             predictions = model.predict(ambiguous_data)
-            print(predictions)
             for index, meaning in zip(ambiguous_data.targets, predictions):
                 result = dict()
                 result["begin"] = sum([len(words[i]) for i in range(index)])
@@ -85,5 +80,4 @@ def predictor(datadir, text):
 
 
 def disambiguation(text):
-    print(predictor("data/", text))
     return json.dumps(predictor("data/", text))
