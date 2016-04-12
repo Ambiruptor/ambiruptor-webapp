@@ -72,7 +72,7 @@ def predictor(datadir, text):
                 result["begin"] = sum([len(words[i]) for i in range(index)])
                 result["end"] = result["begin"] + len(words[index])
                 result["all_senses"] = model.lb.inverse_transform(model.model.classes_).tolist()
-                result["meaning"] = result["all_senses"].index(meaning)
+                result["sense_index"] = result["all_senses"].index(meaning)
                 result["url"] = "https://en.wikipedia.org/wiki/%s" % meaning
                 results.append(result)
 
