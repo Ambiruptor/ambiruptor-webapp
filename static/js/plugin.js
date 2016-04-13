@@ -7,6 +7,7 @@ function success(result) {
     //to be changed ; see with Simon (Pierre)
     result2= "{\"disamb\" : " + result + "}";
     obj = JSON.parse(result2);
+    obj.disamb.sort(function(a,b){return a.begin-b.begin;});
     str = $("#ambiguous_text").val();
     var nhtml = "";
     var prec=0;
